@@ -4,7 +4,7 @@ from flask import render_template
 from elasticsearch import Elasticsearch
 import math
 
-ELASTIC_PASSWORD = "UCGjVj*g3s_YQ2vvWrOC"
+ELASTIC_PASSWORD = ""
 
 es = Elasticsearch("https://localhost:9200", http_auth=("elastic", ELASTIC_PASSWORD), verify_certs=False)
 app = Flask(__name__)
