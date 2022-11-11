@@ -17,15 +17,20 @@
    <script type="text/javascript" src="{{ url_for('static',filename='script/script.js') }}"></script>
 </head>
 <body>
+    {% if hits == [] %}
+        Not found
+    {% else %}
+    
+    
         <!-- section of Book  -->
         {% for doc in hits %}
         <div>
             Title: <a target="_blank"  href="{{doc['web-scraper-start-url']}}">{{ doc['title'] }}</a><br>
             Author: {{ doc['author'] }}<br>
-            Public date: {{ check_null(doc['public_date']) }} <br>
-            Description: {{ doc['description'] }}<br>
-            Rating: {{ check_null(doc['rating']) }}<br>
-            <img src="{{ doc['image-src'] }}" alt="{{doc['title']}}" width="120" height="200"><br>
+            Public date: {{ check_info(doc['public_date']) }} <br>
+            Description: {{ check_info(doc['description']) }}<br>
+            Rating: {{ check_info(doc['rating']) }}<br>
+            <img src="{{ check_info(doc['image-src']) }}" alt="{{doc['title']}}" width="120" height="200"><br>
             <hr>
         </div>
         {% endfor %}
@@ -58,7 +63,7 @@
                 {% endif %}
             </ul>
         </nav>
-
+    {% endif %}
 
 </body>
 </html>

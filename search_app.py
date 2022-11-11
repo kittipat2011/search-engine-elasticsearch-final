@@ -4,7 +4,7 @@ from flask import render_template
 from elasticsearch import Elasticsearch
 import math
 
-ELASTIC_PASSWORD = "" 
+ELASTIC_PASSWORD = ""
 
 es = Elasticsearch("https://localhost:9200", http_auth=("elastic", ELASTIC_PASSWORD), verify_certs=False)
 app = Flask(__name__)
@@ -13,13 +13,15 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-def check_null(words):
-    if(words == "null"):
+def check_info(data):
+    if(data == "null" or data == "This edition doesn't have a description yet. Can you add one?"):
         return "undefined"
+    elif(data == '2x'):
+        return "./static/img/book.png"
     else:
-        return words
+        return data
 
-app.jinja_env.globals.update(check_null = check_null) 
+app.jinja_env.globals.update(check_info = check_info) 
 
 @app.route('/search')
 def search():
@@ -37,10 +39,13 @@ def search():
         'query': {
             'multi_match': {
                 'query': keyword,
+                'type' : "most_fields",
                 'fuzziness': "auto",
                 'fuzzy_transpositions': "true",
                 'slop': 12,
-                'fields': ['title', 'author','description']
+                'auto_generate_synonyms_phrase_query': "true",
+                'zero_terms_query':"none",
+                'fields': ['title', 'author','description','public_date']
             }
         }
     }
