@@ -17,6 +17,7 @@ With Thriller Bookshelf, book enthusiasts can quickly find the perfect thriller 
 
 - `Homepage`<br>
 <img src="/snapshot/homepage.png" alt="Homepage">
+
 - `Search`<br>
 <img src="/snapshot/search.png" alt="Search">
 
