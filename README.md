@@ -13,7 +13,7 @@ Elastic Search's powerful search capabilities will be leveraged to provide users
 With Thriller Bookshelf, book enthusiasts can quickly find the perfect thriller novel to satiate their appetite for suspenseful and thrilling stories.
 
 
-## Quick Peek of the System
+## Snapshot
 
 - `Homepage`<br>
 <img src="/snapshot/homepage.png" alt="Homepage">
