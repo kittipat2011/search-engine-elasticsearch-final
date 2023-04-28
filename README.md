@@ -1,4 +1,4 @@
-# search_engine_elasticsearch
+# Searche Engine Elastic Search
 
 ## Team Members
 - 6388019 Sorawanan Jeamjantarasakhon
